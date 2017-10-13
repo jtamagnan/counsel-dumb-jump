@@ -2,7 +2,7 @@
 ;; Copyright (C) 2017 Jules Tamagnan
 ;; Author: Jules Tamagnan
 ;; Version: 0.1.0
-;; Package-Requires: ((emacs "24.3") (dash "2.9.0") (ivy "0.9.1") (counsel "0.9.1"))
+;; Package-Requires: ((emacs "24.3") (dash "2.9.0") (ivy "0.9.1") (counsel "0.9.1") (dumb-jump "0.5.1"))
 ;; Keywords: programming
 
 ;; Counsel Dumb Jump is free software; you can redistribute it and/or
@@ -24,6 +24,7 @@
 ;; compatibility with Ivy.
 (require 'ivy)
 (require 'counsel)
+(require 'dash)
 (require 'dumb-jump)
 
 (defvar counsel-dumb-jump--current-proj "")
@@ -45,7 +46,7 @@ dumb-jump-to-selected on RESULTS CHOICES and selected choice.
 Assign PROJ to `counsel-dumb-jump--current-proj' for use in occur
 buffer"
   (setq counsel-dumb-jump--current-proj proj)
-  (ivy-read "kJump to: "  choices
+  (ivy-read "Jump to: "  choices
 	    :action (-partial #'dumb-jump-to-selected results choices)
 	    :keymap counsel-ag-map
             :history 'counsel-git-grep-history
